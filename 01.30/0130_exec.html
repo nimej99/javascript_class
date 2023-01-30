@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>에뛰드 모바일 웹 내비게이션</title>
-  <link rel="stylesheet" href="./css/main.css" type="text/css">
+  <link rel="stylesheet" href="./css/exec.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script>
     $(function(){
@@ -41,6 +41,25 @@
           }
         });
       });
+
+      let num=1;
+
+      $('.slide li:last-child').insertBefore('.slide li:first-child');
+      $('.slide').css('margin-left',-420);
+
+      function moveLeft(){
+        $('.slide').animate({'margin-left':-420*2},3000,function(){
+          $('.slide li:first-child').insertAfter('.slide li:last-child');
+          $('.slide').css('margin-left',-420);
+          if(num==3){
+            num=1;
+          }else{
+            num++;
+          }
+        });
+      }
+      let Timer = setInterval(moveLeft,3000);
+
     });
   </script>
 </head>
@@ -52,7 +71,7 @@
           <img src="./images/logo.png" alt="상단로고">
         </a>
       </h1>
-      <div id="toggle" class="on">
+      <div id="toggle">
         <span>&nbsp;</span>
         <span>&nbsp;</span>
         <span>&nbsp;</span>
@@ -74,7 +93,7 @@
     <main>
       <!-- 슬라이드 3장 (좌, 우, 페이드인, 아웃, 상, 하) -->
       <div>
-        <ul>
+        <ul class="slide">
           <li><a href="./images/slide01_01.jpg" title="이미지1"><img src="./images/slide01_01.jpg" alt="이미지1"></a></li>
           <li><a href="./images/slide01_02.jpg" title="이미지2"><img src="./images/slide02_02.jpg" alt="이미지2"></a></li>
           <li><a href="./images/slide01_03.jpg" title="이미지3"><img src="./images/slide03_03.jpg" alt="이미지3"></a></li>
