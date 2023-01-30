@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0111_exec</title>
+    <style>
+        .wrap{
+            width:500px;
+            border:3px solid #333;
+            position:relative;
+            overflow:hidden;
+        }
+        .wrap::after{
+            content:'';
+            display:block;
+            padding-bottom:55.6%;
+        }
+        .jobs{
+            position: absolute;
+            right:0px;
+            bottom:-300px;
+        }
+        .txt{
+            position:absolute;
+            left:-300px;
+            top:100px;
+        }
+    </style>
+    <!-- 제이쿼리 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- 제이쿼리 ul 라이브러리 (easing) -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.wrap').mouseenter(function(){
+                $('.txt').animate({'left':'0px'},700)
+                $('.jobs').animate({'bottom':'0px'},1000)
+            });
+            $('.wrap').mouseleave(function(){
+                $('.txt').animate({'left':'-300px'},700)
+                $('.jobs').animate({'bottom':'-300px'},1000)
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <img src="./images/jobs_text.gif" alt="잡스" class="txt">
+        <img src="./images/jobs.png" alt="잡스" class="jobs">
+    </div>
+    
+</body>
+</html>

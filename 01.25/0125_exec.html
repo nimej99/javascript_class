@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0125_exec</title>
+    <style>
+        .banner *{padding:0px;margin:0px;list-style:none;text-decoration: none;color:#333;}
+        .banner{
+            position: relative;
+            width:1920px;height:450px;
+        }
+        .banner nav{
+            position: absolute;
+            right:0px;
+            top:0px;
+            height:100%;width:180px;
+            background:rgba(255, 255, 255, 0.9);
+            padding-top:40px;
+        }
+        .banner nav li{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items:center;
+            line-height: 60px;
+            box-sizing: border-box;
+            position:relative;
+        }
+        .banner nav li::after{
+            position:absolute;
+            top:0px;
+            right:0px;
+            width:180px;
+            content:'';
+            display:block;
+            border:1px solid #ccc;
+            z-index:1000;
+        }
+        .banner nav li:first-child::after{
+            border:none;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+
+        $(function(){
+            
+            let index = $('.banner nav ul').index();
+            let jjaljjal = 1;
+
+            $('.banner nav ul > li > a').mouseenter(function(){
+                clearInterval(Timer);
+                $('.banner > div > img').attr('src',this.href);
+                $('.banner nav li').css('border','none');
+                $(this).parent().css('border','2px solid #00f');
+                let jjal = $(this).attr('href').split('/')[2];
+                jjaljjal = jjal.split('.')[0];
+            });
+
+            $('.banner nav ul > li > a').mouseleave(function(){
+                clearInterval(Timer);
+                Timer = setInterval(bingbing, 3000);
+            });
+
+            function bingbing(){
+                index = jjaljjal-1;
+                $('.banner > div > img').attr('src','./images03/'+(index+1)+'.jpg')
+                $('.banner nav li').css('border','none');
+                $('.banner nav li:nth-child('+(index+1)+')').css('border','2px solid #00f');
+                if(index==5){
+                    index=0;
+                }else{
+                    index++;
+                }
+                jjaljjal = index+1;
+
+            }
+
+            let Timer = setInterval(bingbing, 3000);
+
+
+        });
+    </script>
+</head>
+<body>
+    <article class="banner">
+        <div>
+            <img src="./images03/1.jpg" alt="큰사진">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./images03/1.jpg" title="작사1">설연휴 끝! 특가</a></li>
+                <li><a href="./images03/2.jpg" title="작사2">직수입 신년 빅세일</a></li>
+                <li><a href="./images03/3.jpg" title="작사3">프렌치카페</a></li>
+                <li><a href="./images03/4.jpg" title="작사4">인기간식</a></li>
+                <li><a href="./images03/5.jpg" title="작사5">생필품 쟁여두기</a></li>
+                <li><a href="./images03/6.jpg" title="작사6">바닐라코</a></li>
+            </ul>
+        </nav>
+    </article>
+    
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 문서객체모델_속성값을 활용한 상품 미리보기 컨텐츠</title>
+    <style>
+        *{padding:0px;margin:0px;list-style:none;}
+        .product{display:flex;}
+        .photo{padding:10px;}
+        .p_box{
+            display:flex;
+        }
+        .p_box > li {width:80px;height:80px;box-sizing: border-box;}
+        .p_box > li > img{width:100%;}
+
+        h3{
+            color:red; 
+            padding:10px;
+            border-bottom:1px solid#ccc;
+        }
+        .coupon{
+            font-weight: bold;
+            padding:10px;
+        }
+        .price{
+            font-weight: bold;
+            font-size:32px;
+            padding:10px;
+        }
+        .price span{color:red;}
+        .price a{
+            font-size:12px;
+            color:#aeaeae;
+            text-decoration: none;
+            border:1px solid #aeaeae;
+            padding:3px;
+        }
+        .juklip{
+            background: #ccc;
+            padding:5px;
+            font-size:12px;
+            margin-top:20px;
+        }
+        .juklip a{
+            text-decoration: none;
+            color:#333;
+        }
+        .product > .photo ul >li .on{
+            border:2px solid #333;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h2>자바스크립트 문서객체모델_속성값을 활용한 상품 미리보기 컨텐츠</h2>
+    <p>이미지 5장을 사용하여 썸네일 이미지를 클릭시 큰사진이 보이게 하기</p>
+    
+    <section class="product">
+        <article class="photo">
+            <img src="./images2/photo01.jpg" alt="이미지1" id="big_img">
+            <!--썸네일 클릭시 해당 속성 src값을 변수에 담아서 출력한다-->
+            <ul class="p_box">
+                <li><img src="./images2/photo01.jpg" alt="이미지1" class="thumb_nail on"></li> 
+                <li><img src="./images2/photo02.jpg" alt="이미지2" class="thumb_nail"></li>
+                <li><img src="./images2/photo03.jpg" alt="이미지3" class="thumb_nail"></li>
+                <li><img src="./images2/photo04.jpg" alt="이미지4" class="thumb_nail"></li>
+                <li><img src="./images2/photo05.jpg" alt="이미지5" class="thumb_nail"></li>
+
+            </ul>
+        </article>
+
+        <article class="">
+            <h3><span>오늘 마감</span></h3>
+            <p class="coupon">[최대 40% 쿠폰] 머렐 헤비다운 외 스포츠 특가</p>
+            <p class="price"><span>10%</span> 151,200원 ~ <a href="#" title="혜택보기">혜택보기</a></p>
+            <p class="juklip">
+                <a href="#" title="구매전적립금5000원받기">구매 전 적립금 5000원 받기</a>
+                <a href="#" title="카드무이자혜택보기(최대6개월)">카드 무이자 혜택보기 (최대 6개월)</a>
+            </p>
+        </article>
+
+    </section>
+
+    <script>
+        function sub_img(){
+        let main = document.getElementById('big_img');
+
+        const small_img = document.getElementsByClassName('thumb_nail');
+
+        for(let i=0;i<small_img.length;i++){
+            small_img[i].addEventListener('click', function(){
+                main.setAttribute('src',this.src);
+
+                // document.querySelector('.photo > ul > li > img.on').classList.remove('on');
+                // this.classList.add('on');
+
+                for(let j=0;j<small_img.length;j++){
+                    small_img[j].style.border='none';
+                    this.style.border='1px solid #f00';
+                }
+            });
+        }
+        }
+        sub_img();
+    </script>
+</body>
+</html>

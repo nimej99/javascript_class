@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1226_exec</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        .lush{
+            width:400px;
+            height:400px;
+            border:5px solid #fff;
+            box-shadow:0px 0px 6px #333;
+            text-align:right;
+            position:relative;
+        }
+        .lush img{
+            width:100%;
+        }
+        i.fas{
+            padding:4px 8px;
+            border:1px solid #333;
+            cursor:pointer;
+        }
+        .fa-angle-left{
+            position: absolute;
+            left:0px;
+            top:50%;
+            color:#fff;
+        }
+        .fa-angle-right{
+            position: absolute;
+            right:0px;
+            top:50%;
+            color:#fff;
+        }
+        #page{
+            padding:10px 20px;
+            font-weight:bold;
+            position:absolute;
+            bottom:0px;
+            right:0px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+        <div class="lush">
+            <img src="./images/lush1.jpg" alt="lush1" id="lush">
+            <span id="page">&nbsp;</span>
+        <i class="fas fa-angle-left" onclick="minus()"></i>
+        <i class="fas fa-angle-right" onclick="plus()"></i>
+        </div>
+    <script>
+        //5. 좌, 우 방향버튼을 클릭하면 해당 함수가 호출되게 하여 1씩 증가되거나, 1씩 감소
+        let n = 1;
+
+        document.getElementById('page').innerHTML=n+'/4';
+
+        //증가하는 함수
+        function plus(){
+            if(n==4) {
+                n=1;
+            }else{
+                n++;
+            }
+        document.getElementById('page').innerHTML=n+'/4';
+        document.getElementById('lush').src="./images/lush"+n+".jpg";
+    }
+        //감소하는 함수
+        function minus(){
+            if(n==1) {
+                n=4;
+            }else{
+                n--;
+            }
+
+        document.getElementById('page').innerHTML=n+'/4';
+        document.getElementById('lush').src="./images/lush"+n+".jpg";  
+    }
+    </script>
+    
+</body>
+</html>

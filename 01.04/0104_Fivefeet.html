@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fivefeet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        *{
+            padding:0px;margin:0px;
+            list-style:none;
+        }
+        .header{
+            width:100%;
+            margin:0px auto;
+        }
+        h2{
+            padding:10px;
+            display:inline-block;
+        }
+        #page{
+            font-weight:bold;
+            color:#aeaeae;
+        }
+        .boxbox{
+            width:1200px;
+            margin:0px auto;
+        }
+        .photo{
+            display:flex;
+            justify-content: space-between;
+            margin:0px auto;
+        }
+        .link{display:flex;}
+        .link li{padding-top:15px;}
+        .link a{
+            text-decoration: none;
+            color:#aeaeae;
+            border:1px solid #aeaeae;
+            padding:5px;
+        }
+        .category{padding:10px;}
+        .category a{
+            text-decoration: none;
+            color:#333;
+        }
+        i.fas{
+        padding:10px;
+        cursor:pointer;
+        color:#333;
+        margin-top:20px;
+        }
+        .fa-angle-left, .fa-angle-right{
+        }
+        .fa-angle-left{
+        }
+         .fa-angle-right{
+        }
+        .g_box{
+            display:flex;
+            justify-content: center;
+        }
+        .g_box span{
+            border:1px solid #ccc;
+        }
+        .gallery{
+            display:flex;
+            align-items: center;
+        }
+        .gallery > li img{
+            width:100%;
+            height:80px;
+            object-fit:cover;
+            box-sizing: border-box;
+            display:block;
+        }
+
+        .big_box{
+            padding:10px;
+            border:1px solid #ccc;
+            text-align: center;
+        }
+        #big_img{
+            max-width:100%;
+            max-height:500px;
+            display:block;margin:0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="boxbox">
+    <div class="header">
+    <ul class="photo">
+        <li>
+        <h2>포토</h2>
+        <span id="page">&nbsp;</span>
+        </li>
+        <li>
+            <ul class="link">
+                <li><a href="#" title="원본보기">원본보기</a></li>
+                <li><a href="#" title="주소복사">주소복사</a></li>
+            </ul>
+        </li>
+    </ul>
+    <hr>
+    <p class="category">
+        <a href="#steal" title="스틸컷(6)" id="a_steal">스틸컷(6)</a>
+        <a href="#promo" title="프로모션(1)" id="a_promo">프로모션(1)</a>
+        <a href="#post" title="포스터(2)" id="a_post">포스터(2)</a>
+    </p>
+    </div>
+    <div class=g_box>
+        <span><i class="fas fa-angle-left" id="prev"></i></span>
+        <ul class="gallery">
+            <li><img src="./images3/image1.jpg" alt="" class="small_img" id="steal"></li>
+            <li><img src="./images3/image2.jpg" alt="" class="small_img"></li>
+            <li><img src="./images3/image3.jpg" alt="" class="small_img"></li>
+            <li><img src="./images3/image4.jpg" alt="" class="small_img"></li>
+            <li><img src="./images3/image5.jpg" alt="" class="small_img"></li>
+            <li><img src="./images3/image6.jpg" alt="" class="small_img"></li>
+            <li><img src="./images3/image7.jpg" alt="" class="small_img" id="promo"></li>
+            <li><img src="./images3/image8.jpg" alt="" class="small_img" id="post"></li>
+            <li><img src="./images3/image9.jpg" alt="" class="small_img"></li>
+        </ul>
+        <span><i class="fas fa-angle-right" id="next"></i></span>
+    </div>
+
+    <div class="big_box">
+        <img src="./images3/image1.jpg" alt="" id="big_img">
+    </div>
+    </div>
+    <script>
+        // 갤러리 서식
+        let main = document.getElementById('big_img');
+
+        let small_img = document.getElementsByClassName('small_img');
+
+        let page = document.getElementById('page');
+
+        for(let i=0;i<small_img.length;i++){
+            small_img[i].addEventListener('click', function(){
+                main.setAttribute('src',this.src);
+                document.getElementById('page').innerHTML=i+1+'/9';
+                
+                for(let j=0;j<small_img.length;j++){
+                    small_img[j].style.border='none';
+                    this.style.border='3px solid #f00';
+                }
+            })
+        }
+
+        // 버튼서식
+        let n = 1;
+
+        document.getElementById('page').innerHTML= n + '/9';
+
+        function nextImg(){
+            let next = document.getElementById('next');
+            next.addEventListener('click', function(){
+                if(n==9){
+                    n = 1;
+                }else{
+                    n++;
+                }
+                document.getElementById('page').innerHTML=n + '/9';
+                main.setAttribute('src', './images3/image'+ n +'.jpg');
+                for(let z = 0; z < small_img.length; z++){
+                    let splitImgSrc = small_img[z].src.split('/');
+                    if(splitImgSrc[splitImgSrc.length-1].split('.')[0].replace('image','') != n){ // image?.jpg ?값 가져오기
+                        small_img[z].style.border = 'none';
+                    } else {
+                        small_img[z].style.border = '3px solid #f00';
+
+                    }
+                    
+                }
+            })
+        }
+        nextImg();
+
+        function prevImg(){
+            let prev = document.getElementById('prev');
+            prev.addEventListener('click', function(){
+                if(n==1){
+                    n = 9;
+                }else{
+                    n--;
+                }
+                document.getElementById('page').innerHTML=n + '/9';
+                main.setAttribute('src', './images3/image'+ n +'.jpg');
+                for(let k = 0; k < small_img.length; k++){
+                    let splitImgSrc2 = small_img[k].src.split('/');
+                    if(splitImgSrc2[splitImgSrc2.length-1].split('.')[0].replace('image','') != n){ // image?.jpg ?값 가져오기
+                        small_img[k].style.border = 'none';
+                    } else {
+                        small_img[k].style.border = '3px solid #f00';
+
+                    }
+                    
+                }
+            })
+        }
+        prevImg();
+
+        let steal = document.getElementById('a_steal');
+        let promo = document.getElementById('a_promo');
+        let post = document.getElementById('a_post');
+
+        let i_steal = document.getElementById('steal');
+        let i_promo = document.getElementById('promo');
+        let i_post = document.getElementById('post');
+
+        steal.addEventListener('click', function(){
+            main.setAttribute('src','./images3/image1.jpg');
+            for(let a=0;a<small_img.length;a++){
+                small_img[a].style.border='none';
+            }
+            i_steal.style.border="3px solid #f00";
+        })
+        promo.addEventListener('click', function(){
+            main.setAttribute('src','./images3/image7.jpg');
+            for(let a=0;a<small_img.length;a++){
+                small_img[a].style.border='none';
+            }
+            i_promo.style.border="3px solid #f00";
+        })
+        post.addEventListener('click', function(){
+            main.setAttribute('src','./images3/image8.jpg');
+            for(let a=0;a<small_img.length;a++){
+                small_img[a].style.border='none';
+            }
+            i_post.style.border="3px solid #f00";
+        })
+
+    </script>
+</body>
+</html>

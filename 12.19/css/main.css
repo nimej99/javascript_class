@@ -1,0 +1,15 @@
+@charset "uft-8";
+
+h3{
+    background-color: #ff0;
+    color:#f00;
+    text-align: center;
+}
+
+
+footer{
+    background: #333;
+    color:#fff;
+    text-align: center;
+    line-height: 50px;
+}

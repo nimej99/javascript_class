@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0109_exec</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!-- 제이쿼리 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        .c_banner{
+            width:100%;
+            margin:0px auto;
+            text-align: center;
+        }
+        i.fa-xmark{
+            color:#333;
+            padding:10px 20px 10px 20px;
+            line-height:50px;
+            position:absolute;
+            right:280px;
+            top:8px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+
+            let btn1 = $('#btn1');
+
+            btn1.click(function(){
+                $('.c_banner').slideUp();
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div class="c_banner">
+        <img src="./images/coupang_02.jpg" alt="배너">
+        <i class="fa-solid fa-xmark" id="btn1"></i>
+    </div>
+</body>
+</html>

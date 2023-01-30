@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1230_exec01_tab</title>
+    <style>
+        *{
+            padding:0px;margin:0px;
+            list-style: none;
+        }
+        h2, p{padding:10px;}
+        #item{
+            width:360px;
+            border:3px solid #000;
+        }
+        #item > p{
+            text-align: center;
+        }
+        .detail{
+            background: #ccc;
+            height:100px;
+            font-size:12px;
+            padding:5px;
+            display:none;
+        }
+
+        /* 많이 본 뉴스 */
+        #news{
+            width:360px;
+            border:1px solid #ccc;
+        }
+        .m_news{display:flex;position:relative;}
+        input{
+            border:none;
+            box-sizing:border-box;
+            background: #fff;
+            color:rgb(32, 32, 148);
+            padding:0px 10px;
+            font-weight: bold;
+            font-size:1rem;
+        }
+        .ndetail{
+            width:360px;
+            height:500px;
+            font-size:12px;
+            padding:5px;
+            position:absolute;
+            box-sizing: border-box;
+            display:none;
+        }
+        .des1 > li{
+            width:360px;
+            line-height:40px;
+            text-overflow: ellipsis;
+            overflow:hidden;
+            white-space:nowrap;
+            counter-increment:list-number;
+        }
+        .des1 > li::before{
+            content:counter(list-number);
+            color:darkblue;
+            font-weight:bold;
+            font-size:18px;
+        }
+        .des1 > li > a{
+            color:#272727;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+
+
+
+        
+    </style>
+</head>
+<body>
+    <h2>1230_exec01_tab</h2>
+    <p>제목을 클릭시 해당 글내용이 아래 보이게하기</p>
+
+    <div id="item">
+        <img src="./images/banner.jpg" alt="배너">
+        <p><input type="button" value="상세설명 보기" id="open"></p>
+        <div id="desc" class="detail">
+            상세설명, 뉴스기사목록이 들어가는 부분
+        </div>
+    </div>
+
+    <script>
+        const btn01 = document.getElementById('open');
+
+        btn01.addEventListener('click', function(){
+            document.getElementById('desc').style.display='block';
+        });
+    </script>
+
+    <div id="news">
+        <ul class="m_news">
+        <li><h3>많이 본 뉴스</h3></li>
+        <li><input type="button" value="MBC" id="m_open"></li>
+        <li><input type="button" value="포털" id="p_open"></li>
+        <li><input type="button" value="SNS" id="s_open"></li>
+        <li><input type="button" value="유튜브" id="y_open"></li>
+        </ul>
+
+        <div id="m_desc" class="ndetail">
+            <ul class="des1">
+                <li><a href="#" title="mbc기사1"> '연쇄 살인범' 신상 공개‥31살 이기영</a></li>
+                <li><a href="#" title="mbc기사2"> '제2경인고속 화재' 최초 화재 운전자 입건‥"펑 소리 나더니 불"</a></li>
+                <li><a href="#" title="mbc기사3"> '신생아 4명 사망' 이대목동병원 의료진 무죄 확정</a></li>
+                <li><a href="#" title="mbc기사4"> 한 총리 "중국발 입국 전후 코로나 검사 의무화"‥단기비자 발급 제한</a></li>
+                <li><a href="#" title="mbc기사5"> [World Now] 영면에 든 펠레‥예전 활약 영상</a></li>
+                <li><a href="#" title="mbc기사6"> 올해 소비자물가 5.1%↑‥외환위기 이후 최고치</a></li>
+                <li><a href="#" title="mbc기사7"> 미국서 한국산 전기차도 '리스 차량'은 보조금</a></li>
+            </ul>
+        </div>
+        <div id="p_desc" class="ndetail">
+            <ul class="des1">
+                <li><a href="#" title="포털기사1"> [단독] 숨진 빌라왕 송 모 씨‥"일감 받아 심부름한 사람이었다"</a></li>
+                <li><a href="#" title="포털기사2"> [단독] 운동선수·유흥업소 '선수'까지 뇌전증 연기</a></li>
+                <li><a href="#" title="포털기사3"> [와글와글] 인기 요가 강사, 알고 보니 FBI 수배 '살인 용의자'</a></li>
+                <li><a href="#" title="포털기사4"> 잿더미 된 차량 그대로‥이 시각 갈현고가교</a></li>
+                <li><a href="#" title="포털기사5"> '신생아 4명 사망' 이대목동병원 의료진 무죄 확정</a></li>
+                <li><a href="#" title="포털기사6"> "차 두고 뛰쳐나와" 순식간에 번진 불길에 '필사의 탈출'</a></li>
+                <li><a href="#" title="포털기사7"> 윤 대통령 "우월한 전쟁 준비해야" vs 野 "'안보'는 전쟁 안나게 하는 것"</a></li>
+                <li><a href="#" title="포털기사8"> '연쇄 살인범' 신상 공개‥31살 이기영</a></li>
+                <li><a href="#" title="포털기사9"> 한 총리 "중국발 입국 전후 코로나 검사 의무화"‥단기비자 발급 제한</a></li>
+                <li><a href="#" title="포털기사10"> [단독] 빌라왕 뒤의 빌라왕‥끝은 어디인가?</a></li>
+            </ul>
+        </div>
+        <div id="s_desc" class="ndetail">
+            <ul class="des1">
+                <li><a href="#"> 황희찬 역전골, 팬들이 뽑은 'KFA 올해의 골'</a></li>
+                <li><a href="#"> MBC, 가장 즐겨보는 뉴스 채널 1위</a></li>
+                <li><a href="#"> [World Now] 영면에 든 펠레‥예전 활약 영상</a></li>
+                <li><a href="#"> 경북 구미 고속도로서 연쇄추돌‥2명 사망</a></li>
+                <li><a href="#"> '축구 전설'로 남은 펠레‥암투병 끝 별세</a></li>
+                <li><a href="#"> [단독] 숨진 빌라왕 송 모 씨‥"일감 받아 심부름한 사람이었다"</a></li>
+                <li><a href="#"> 전주 얼굴없는 천사‥ 23년간 8억 8천여만 원 기부</a></li>
+                <li><a href="#"> [와글와글] "네가 왜 거기서 나와"‥ 대형 쇼핑몰 5층에 '경찰서'?</a></li>
+                <li><a href="#"> [단독] 빌라왕 뒤의 빌라왕‥끝은 어디인가?</a></li>
+                <li><a href="#"> 터널을 집어 삼킨 '화마'에 5명 숨지고 37명 다쳐</a></li>
+            </ul>
+        </div>
+        <div id="y_desc" class="ndetail">
+            <ul class="des1">
+                <li><a href="#"> 오늘 새벽 또 무인기 소동‥굉음에 놀라 '깜짝'</a></li>
+                <li><a href="#"> [뉴스외전 경제 '쏙'] '1/4 토막' 테슬라의 몰락‥"고양이 밥도 못 맡긴다"</a></li>
+                <li><a href="#"> "차 두고 뛰쳐나와" 순식간에 번진 불길에 '필사의 탈출'</a></li>
+                <li><a href="#"> [와글와글] "네가 왜 거기서 나와"‥ 대형 쇼핑몰 5층에 '경찰서'?</a></li>
+                <li><a href="#"> '비밀 경찰서' 의심 중식당 "추악한 세력 폭로하겠다"</a></li>
+                <li><a href="#"> '비밀 경찰서' 지목 중식당 "오늘 폭로하겠다" 예고</a></li>
+                <li><a href="#"> "도대체 뭐한 거냐" 대통령 질책에 군 "억울하다" 볼멘소리도</a></li>
+                <li><a href="#"> [와글와글] "아무도 없다 훔치자!" 재해 틈탄 도둑들</a></li>
+                <li><a href="#"> "김정은이 남친인가?" 미국, 독일에서 인종차별 범죄 잇따라</a></li>
+                <li><a href="#"> [단독] 숨진 빌라왕 송 모 씨‥"일감 받아 심부름한 사람이었다"</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+
+        const m_btn = document.getElementById('m_open');
+
+    m_btn.addEventListener('click', function(){
+        document.getElementById('m_desc').style.display='block';
+        document.getElementById('p_desc').style.display='none';
+        document.getElementById('s_desc').style.display='none';
+        document.getElementById('y_desc').style.display='none';
+
+        m_open.style.color='darkblue';
+        p_open.style.color='#ccc';
+        s_open.style.color='#ccc';
+        y_open.style.color='#ccc';
+    });
+        const p_btn = document.getElementById('p_open');
+
+    p_btn.addEventListener('click', function(){
+        document.getElementById('p_desc').style.display='block';
+        document.getElementById('m_desc').style.display='none';
+        document.getElementById('s_desc').style.display='none';
+        document.getElementById('y_desc').style.display='none';
+
+        m_open.style.color='#ccc';
+        p_open.style.color='darkblue';
+        s_open.style.color='#ccc';
+        y_open.style.color='#ccc';
+    });
+        const s_btn = document.getElementById('s_open');
+
+    s_btn.addEventListener('click', function(){
+        document.getElementById('s_desc').style.display='block';
+        document.getElementById('m_desc').style.display='none';
+        document.getElementById('p_desc').style.display='none';
+        document.getElementById('y_desc').style.display='none';
+
+        m_open.style.color='#ccc';
+        p_open.style.color='#ccc';
+        s_open.style.color='darkblue';
+        y_open.style.color='#ccc';
+    });
+        const y_btn = document.getElementById('y_open');
+
+    y_btn.addEventListener('click', function(){
+        document.getElementById('y_desc').style.display='block';
+        document.getElementById('m_desc').style.display='none';
+        document.getElementById('p_desc').style.display='none';
+        document.getElementById('s_desc').style.display='none';
+
+        m_open.style.color='#ccc';
+        p_open.style.color='#ccc';
+        s_open.style.color='#ccc';
+        y_open.style.color='darkblue';
+    });
+
+    </script>
+</body>
+</html>

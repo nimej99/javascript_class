@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수를 활용하여 배너 구현하기</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    .lush{
+        width:500px;
+        height:500px;
+        border:5px solid #fff;
+        box-shadow:0px 0px 6px #333;
+        text-align:right;
+        position:relative;
+        overflow:hidden;
+    }
+    .lush img{
+        width:100%;
+    }
+    i.fas{
+        padding:10px;
+        background: rgba(0,0,0,.7);
+        cursor:pointer;
+        color:#fff;
+    }
+    .fa-angle-left, .fa-angle-right{
+        position:absolute;
+        top:50%;
+    }
+    .fa-angle-left{
+        left:0px;
+    }
+    .fa-angle-right{
+        right:0px;
+    }
+    #page{
+        background: rgba(0,0,0,.7);
+        padding:0px 10px;
+        font-weight:bold;
+        position:absolute;
+        bottom:0px;
+        right:0px;
+        color:#fff;
+    }
+    </style>
+</head>
+<body>
+    <h2>함수를 활용하여 배너 구현하기</h2>
+    <dl>
+        <dt>구현순서</dt>
+        <dd>banner영역을 만들고 이미지 태그요소를 사용하여 첫번째 이미지를 삽입한다.</dd>
+        <dd>아이콘 폰트를 사용하여 좌, 우끝에 방향표시 버튼을 삽입한다.</dd>
+        <dd>자바스크립트에서 nextimg, previmg 함수를 각각 작성하여 총 이미지 개수 4장을 초과하지 않게 조건식을 작성한다.</dd>
+        <dd>좌, 우 버튼에 이벤트를 사용하여 각각 클릭하면 해당함수가 호출되게 하고, 이미지, 해당 번호가 표시되게 한다.</dd>
+    </dl>
+
+    <div class="lush">
+        <img src="./images/lush1.jpg" alt="lush1" id="lush">
+        <span id="page">&nbsp;</span>
+    <i class="fas fa-angle-left" onclick="prevImg();"></i>
+    <i class="fas fa-angle-right" onclick="nextImg();"></i>
+    </div>
+
+    <script>
+        //변수선언
+        let n =1;
+        // 초기값 설정
+        document.getElementById('page').innerHTML=n + '/4';
+
+        //함수 작성하기
+        function nextImg(){ //4,1,2,3,4 증감
+            // alert('다음이미지');
+            if(n==4){  //n이 4라면 (마지막 숫자) 1로 가기위해 1주고
+                n = 1;
+
+            }else{
+                n++; //1씩 증가
+            }
+            console.log(n);
+            document.getElementById('lush').src='./images/lush'+n+'.jpg';
+            document.getElementById('page').innerHTML=n + '/4';
+        }
+        function prevImg(){ //1,4,3,2,1 감소
+            // alert('이전이미지');
+            if(n==1){ //n이 1이라면 마지막으로 가기위해 4를 준당
+                n = 4;
+            }else{
+                n--; //1씩 감소
+            }
+            console.log(n);
+            document.getElementById('lush').src='./images/lush'+n+'.jpg';
+            document.getElementById('page').innerHTML=n + '/4';
+        }
+
+            // 시간객체를 사용하여 매 초마다 반복실행하기
+            // setinterval I대문자 (함수명, 반복시간)
+            let Timer = setInterval(nextImg, 5000); //5초
+    </script>
+
+    
+</body>
+</html>

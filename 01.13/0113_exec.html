@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0113_exec.html</title>
+    
+    <style>
+        *{margin:0px; padding:0px; list-style: none;}
+        a{color:#333; text-decoration: none;}
+        .b_wrap{
+            width:340px;height:378px;
+            margin:0 auto;
+            padding-top:100px;
+            overflow:hidden;
+        }
+        .banner{
+            display:flex;
+            position:relative;
+        }
+        .c_btn{
+            width:100px;
+            display:flex;
+            transform: translate(130px,-30px);
+        }
+        .c_btn > li{
+            width:15px;height:15px;
+            border-radius:50%;
+            background: #fff;
+            margin:0px 5px;
+            transition:0.3s;
+            z-index:10;
+        }
+        .on{
+            background:#222 !important;
+            width:20px !important;border-radius:5px !important;
+        }
+        .p_btn{
+            width:100px;
+            display:flex;
+            color:#fff;
+            transform: translate(300px,-47px);
+        }
+        .p_btn > li{margin:0px 3px;}
+    </style>
+    <!-- 폰트어썸 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <!-- 제이쿼리 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <article class="b_wrap">
+        <ul class="banner">
+            <li><img src="./images/01-1.jpg" alt="이미지1"></li>
+            <li><img src="./images/02-1.jpg" alt="이미지2"></li>
+            <li><img src="./images/03-1.jpg" alt="이미지3"></li>
+        </ul>
+        <ul class="c_btn">
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+        </ul>
+        <ul class="p_btn">
+            <li><i class="fa-solid fa-play"></i></li>
+            <li><i class="fa-solid fa-stop"></i></li>
+        </ul>
+    </article>
+
+    <script>
+        $(function(){
+
+            let n = $('.c_btn li').index();
+
+            let img_w = $('.banner img').width();
+
+            $('.c_btn li').click(function(){
+                n = $(this).index();
+                console.log(n); //0,1,2,3.....
+                console.log(img_w*n); //0, 250, 500, 750.....
+
+                $('.banner').stop().animate({'left':-img_w*n},500);
+                $('.c_btn li').removeClass();
+                $(this).attr('class','on');
+            });
+
+            function autoSlide(n){ //n에 슬라이드 이동 값을 넣어주고
+                n=-(n*$('.banner img').width());
+                $('.banner').animate({'left':n},500);
+            }
+
+            let Timer = setInterval(function(){ 
+                //시간함수로 autoslide 인덱스 n값을 받아온다
+                if(n==2){
+                    n=0;
+                    $('.c_btn li').removeClass();
+                    $('.c_btn li').eq(n).attr('class','on');
+                }else{
+                    n++;
+                    $('.c_btn li').removeClass();
+                    $('.c_btn li').eq(n).attr('class','on');
+                }
+                autoSlide(n);
+                }, 3000);
+
+                $('.c_btn').hover(function(){
+                    clearInterval(Timer);
+                },function(){
+                    Timer = setInterval(function(){
+                        if(n==2){
+                            n=0;
+                            $('.c_btn li').removeClass();
+                            $('.c_btn li').eq(n).attr('class','on');
+                        }else{
+                            n++;
+                            $('.c_btn li').removeClass();
+                            $('.c_btn li').eq(n).attr('class','on');
+                        }
+                        autoSlide(n);
+                    }, 3000);
+                });
+                
+                $('i.fa-play').click(function(){
+                    if(!Timer){ //타이머가 false 이면 재생 ((정지에 false를 넣어줌))
+                        Timer = setInterval(function(){
+                            if(n==2){
+                                n=0;
+                                $('.c_btn li').removeClass();
+                                $('.c_btn li').eq(n).attr('class','on');
+                            }else{
+                                n++;
+                                $('.c_btn li').removeClass();
+                                $('.c_btn li').eq(n).attr('class','on');
+                            }
+                            autoSlide(n);
+                        }, 3000);
+                    }
+                });
+                
+                $('i.fa-stop').click(function(){ //스탑버튼 클릭시 중지
+                    clearInterval(Timer);
+                    Timer = false;
+                });
+
+
+        });
+      </script>
+    
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02문서객체모델_속성(attribute)변경.html</title>
+
+</head>
+<body>
+    <h2>02문서객체모델_속성(attribute)변경.html</h2>
+    <p>웹문서에서 요소를 삽입할 때 속성을 사용하여 입력하는 경우가 있다. 자바스크립트에서 사용자가 선택한 태그요소의 속성을 선택하고 설정을 변경하는 방법에 대해 알아본다.</p>
+    <ul>
+        <li>getAttribute('속성명');</li>
+        <li>setAttribute('속성명, '값');</li>
+    </ul>
+
+    <img src="./pic_bulboff.gif" alt="" id="bulb">
+
+    <script>
+        //#bulb를 클릭시 src속성값을 가져와서 출력해보기
+        let b = document.getElementById('bulb'); 
+        //id bulb꺼 가져오기
+        let img_src = b.getAttribute('src');
+        //가져온 bulb의 src속성 src='./pic_bulboff.gif' 선택하기
+        console.log(img_src);
+
+        b.addEventListener('click', function(){ //b=이미지를 클릭
+            this.setAttribute('src', './pic_bulbon.gif'); //자신의 속성인 src의 값을 변경한다.
+        });
+    </script>
+
+</body>
+</html>
