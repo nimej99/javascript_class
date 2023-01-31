@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cj_onstyle_faq.html</title>
+  <!-- 제이쿼리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <!-- 폰트어썸 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    *{
+  margin:0px;
+  padding:0px;
+}
+ol, ul, li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color:#333;
+}
+body{
+  font-family: '맑은 고딕', arial, sans-serif;
+  font-size:12px;
+  color:#333;
+}
+.hidden{display:none;}
+.color{
+  color:#640faf;
+}
+section{
+  width:1180px;
+  margin: 0 auto;
+}
+fieldset{
+  background-color: #fff;
+  border:none;
+  margin:0 auto;
+}
+fieldset > legend{
+  display:none;
+}
+.box_search{
+  width:668px;
+  height:33px;
+  margin:50px auto;
+  padding: 0 40px;
+  border: 1px solid #640faf;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.tf_search{
+  width:100%;
+  height:23px;
+  font-size:13px;
+  padding:5px 0;
+  border:none;
+  color:#333;
+}
+#submit{
+  position: absolute;
+  left:10px;
+  display: none;
+}
+.box_search::after{
+  content: "\f002";
+  position: absolute;
+  top: 10px; left: 14px;
+  color: #640faf;
+  font-size: 13px;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+h2{
+  margin:50px 10px;
+}
+.faq > dt{
+  height:20px;
+  padding:14px 15px 12px 13px;
+  line-height: 1.35;
+  position: relative;
+}
+.faq > dt:not(.faq > dt:first-child){
+  border-top:1px solid #f0f0f0;
+}
+.faq > dt strong{
+  width:20px;
+  margin-right:7px;
+  font-size:15px;
+  text-align: center;
+  color:#640faf;
+  font-weight: bold;
+}
+.faq > dt i.fas{
+  position: absolute;
+  right:10px;
+  font-size:20px;
+}
+.faq > dd{display:none;}
+
+.act{
+  transform: rotate(180deg);
+}
+
+  </style>
+  <script>
+    $(function(){
+    let q = $('.faq > dt');
+
+    q.click(function(){
+      // $(this).find('i.fas').addClass('act').parent().siblings().find('i.fas').removeClass('act');
+      $(this).find('i.fas').toggleClass('act');
+      // $(this).next().show().siblings('dd').hide();
+      $(this).next().slideToggle(1);
+    });
+    })
+
+
+  </script>
+</head>
+<body>
+  <section>
+  <fieldset>
+    <legend class="hidden">검색</legend>
+    <div class="box_search">
+      <label class="hidden">검색</label>
+      <input type="search" class="tf_search" placeholder="검색어를 입력해 주세요.">
+      <input type="submit" id="submit">
+    </div>
+  </fieldset>
+  <h2>자주하는 질문 TOP 10</h2>
+  <dl class="faq">
+    <dt><strong>1</strong>반품 신청은 어떻게 하나요?<i class="fas fa-angle-down"></i></dt>
+    <dd><img src="./images/1.jpg" alt="이미지1"></dd>
+    <dt><strong>2</strong>주문을 취소하고 싶어요.<i class="fas fa-angle-down"></i></dt>
+    <dd><img src="./images/2.jpg" alt="이미지2"></dd>
+    <dt><strong>3</strong>리뷰는 어떻게 작성하나요?<i class="fas fa-angle-down"></i></dt>
+    <dd><img src="./images/3.png" alt="이미지3"></dd>
+    <dt><strong>4</strong>반품 시 별도 택배비가 부과되나요?<i class="fas fa-angle-down"></i></dt>
+    <dd>
+			1. 반품 택배비가 무료인 경우<br> - 수령한 상품이 파손/불량이거나 상품이 잘못배송된 경우<br> <br> 2. 반품 택배비가 고객 부담인 경우<br> - 구입합 상품 상세설명의 교환/반품정보에 배송비 고객부담이라고 표기되어 있는 상품 중 고객변심에 의한 반품을 요청하는 경우<br> &nbsp;
+    </dd>
+    <dt><strong>5</strong>원하는상품 방송시간을 문자로 받고 싶어요<i class="fas fa-angle-down"></i></dt>
+    <dd><img src="./images/5.jpg" alt="이미지5"></dd>
+    <dt><strong>6</strong>회원 탈퇴는 어떻게 하나요?<i class="fas fa-angle-down"></i></dt>
+    <dd>
+			CJ온스타일 PC 로그인 후 마이존 &gt; [회원 탈퇴] 메뉴를 통해 고객님께서 직접 처리할 수 있습니다.<br> [회원 탈퇴시 유의점]<br> - CJ ONE 통합회원의 경우 CJ ONE사이트에서 탈퇴(약관동의철회)처리를 진행하셔야합니다.<br> - 회원 아이디로 등록되어 있는 적립금, 할인쿠폰, CJ ONE 포인트는 자동 소멸됩니다.<br> - 회원 탈퇴 시 CJ온스타일이 운영하고 있는 모든 사이트에서 동시 회원탈퇴 됩니다.<br> - 회원 탈퇴 후 재가입 하는 경우에도 신규가입혜택(할인쿠폰 등)은 적용되지 않으며 신규회원 대상 이벤트에 응모할 수 없습니다.
+		</dd>
+    <dt><strong>7</strong>배송지를 변경 할 수 있나요?<i class="fas fa-angle-down"></i></dt>
+    <dd><img src="./images/7.jpg" alt="이미지7"></dd>
+    <dt><strong>8</strong>교환 신청은 어떻게 하나요?<i class="fas fa-angle-down"></i></dt>
+    <dd><img src="./images/8.jpg" alt="이미지8"></dd>
+    <dt><strong>9</strong>CJ온스타일 앱(어플리케이션)은 어떻게 설치하나요?<i class="fas fa-angle-down"></i></dt>
+    <dd><img src="./images/9.jpg" alt="이미지9"></dd>
+    <dt><strong>10</strong>결제수단 변경하려면 주문취소하고 재주문하나요?<i class="fas fa-angle-down"></i></dt>
+    <dd>
+			상품을 취소하지 않고도 다른 결제수단으로 결제 변경이 가능합니다.<br> - [CJ온스타일 로그인] &gt; [마이존] &gt; [주문/배송 조회] &gt; [결제변경]<br> : 당일 주문 건에 한하여 23시30분까지 신용카드로 결제변경이 가능합니다.<br> <br> - 신용카드 외 다른 결제수단으로 변경을 원하는 경우<br> : 당사 고객센터(1644-2525)로 연락주시면 결제변경 도와드리겠습니다.
+		</dd>
+  </dl>
+</section>
+</body>
+</html>
