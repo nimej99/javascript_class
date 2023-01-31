@@ -90,9 +90,31 @@ i.fas{
   font-size:26px;
   color:#222;
 }
+.page{
+      list-style:none;padding:0px;
+      display:flex;
+      justify-content: center;
+      font-size:12px;
+    }
+    .page > li{
+      display:inline-block;
+      border:1px solid #ccc;
+      padding:0px 5px;
+      margin-right:-1px;
+      color:darkgreen;
+    }
+    .page > li:hover{background: #ccc;}
+    .page > li:first-child{border-radius:2px 0px 0px 2px;}
+    .page > li:last-child{border-radius:0px 2px 2px 0px;}
+    .on{
+      background: #006633;
+      color:#fff !important;
+    }
 /* 제목에 적용되는 컬러 */
 .act01{color:#006633;}
 /* 화살표 방향 */
 .act02{transform: rotate(180deg);}
+
+
 
 
