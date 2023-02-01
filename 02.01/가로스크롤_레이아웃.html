@@ -107,7 +107,7 @@
                //화면 이동 0.3초(300)
               $("html,body").stop().animate({scrollLeft : moveTop + "px"}, 300);
               
-              $('.gnb li a').each(function(){
+              $('.gnb li a').each(function(i){
                 if(i == index_slide){
                   $('.gnb li a.on').removeClass('on');
                   $(this).addClass('on');
