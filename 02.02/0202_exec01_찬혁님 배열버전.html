@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>탭 메뉴_실습예제01_전찬혁</title>
+
+  <!-- 폰트어썸 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<!-- 제이쿼리 라이브러리  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- jQuery UI 라이브러리 -->
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+  <style>
+    .hide{display : none;}
+    *{margin : 0; padding : 0;}
+    a{text-decoration : none;}
+    ul, ol {
+      list-style : none;
+    }
+
+    article {
+      margin : 15px auto;
+      width : 80vw;
+      height : 100vw;
+      border : 3px solid #333;
+      position : relative;
+    }
+
+    .tab_mnu {
+      display : flex;
+      width : 100%;
+      height : 7vw;
+    }
+
+    .tab_mnu > li {
+      width : 20%;
+      height : 100%;
+    }
+
+    .tab_mnu > li > a {
+      display : block;
+      text-align : center;
+      width : 100%;
+      height : 100%;
+    }
+
+    .tab_mnu > li > a img{
+      width : 25%;
+      height : 70%;
+    }
+
+    .tab_mnu > li > a p{
+      font-weight : 900;
+      color : #333;
+      font-size : 1vw;
+    }
+
+    .cont {
+      position : absolute;
+      width : 80vw;
+      height : calc(100vh - 7vw); 
+      left : 0;
+      top : 7vw;
+    }
+    .cont img {
+      width : 100%;
+    }
+
+    .c01{
+      background-color : #666;
+    }
+    .c02{
+      background-color : #888;
+    }
+    .c03{
+      background-color : #aaa;
+    }
+    .c04{
+      background-color : #ccc;
+    }
+    .c05{
+      background-color : #fff;
+    }
+
+    .cont:not(.c01){
+      display : none;
+    }
+
+
+
+
+
+    .on {
+      background-color : #f06d01;
+    }
+    .on > p {
+      color : #fff !important;
+    }
+
+  </style>
+
+
+<script>
+    // for (let i of origin_src){
+    //   alert(i.getAttribute('src'));
+    // }
+    
+    // const p = [1,2,3,4,5];
+    // const array01 = [];
+    // for (let i of p){
+    //   array01[num] = i;
+    //   alert(array01);
+    //   num++;
+    // }
+
+
+    $(document).ready(function(){
+      // 탭 버튼(a태그)을 변수에 담는다.
+      let t_btn = $('.tab_btn');
+
+      // 탭버튼 이미지 태그들을
+      let origin_src = document.querySelectorAll('.tab_btn > img');
+
+      // 빈 배열을 생성한다.
+      const src_list = [];
+
+      // 번호를 매길 초기값
+      let num = 0;
+
+      // origin_src 배열에서 이미지태그들을 순서대로 받아와
+      for (let i of origin_src){
+
+        // getAttribute()메서드를 활용해 이미지의 src 속성값을 src_list 배열에 담는다.
+        src_list[num] = i.getAttribute('src');
+        num++;
+      }
+
+      // 첫 번째 탭메뉴 이미지를 클릭 시 이미지로 바꿔준다.
+      const z = $('.tab_mnu li:first-child > a').attr('href');
+      $('.tab_mnu li:first-child > a > img').attr('src',z);
+      
+      // 탭 버튼(a태그)을 클릭 시
+      t_btn.click(function(){
+
+        // 클릭 한 a 태그의 href 속성값을 변수에 담고
+        let img_src = $(this).attr('href');
+        // 누른 a 태그에 클래스 부여
+        $(this).addClass('on').parent().siblings().find('a').removeClass('on');
+
+        // 모든 이미지 주소를 초기화( 클릭 안된 요소를 원래 이미지로 바꾼다. )
+        let p = 0;
+        for(let i of src_list){
+          $('.tab_mnu > li').eq(p).find('a > img').attr('src',i);
+          p++;
+        }
+        p=0;
+
+        // 클릭 한 이미지 하얀색으로 변경
+        $(this).find('img').attr('src',img_src);
+
+
+        // 모든 div 요소(아래 이미지 박스)를 안보이게 하고
+        $('.tab_mnu > li').find('.cont').hide();
+
+        // 클릭한 순서의 이미지를 보이게 한다.
+        $('.tab_mnu > li').eq($(this).parent().index()).find('.cont').show();
+        return false;
+
+      });
+    });
+  </script>
+
+
+
+
+</head>
+<body>
+
+  <article>
+    <ul class="tab_mnu">
+      <li>
+        <a href="./img/ico_theme_zone_1_on.png" title="" class="on tab_btn">
+          <img src="./img/ico_theme_zone_1_off.png" alt="가방사진">
+          <p>테마여행</p>
+        </a>
+        <div class="cont c01">
+          <img src="./img/01.jpg" alt="">
+        </div>
+      </li>
+      <li>
+        <a href="./img/ico_theme_zone_2_on.png" title="" class=" tab_btn">
+          <img src="./img/ico_theme_zone_2_off.png" alt="일정표 사진">
+          <p>추천일정</p>
+        </a>
+        <div class="cont c02">
+          <img src="./img/02.jpg" alt="">
+        </div>
+      </li>
+      <li>
+        <a href="./img/ico_theme_zone_3_on.png" title="" class=" tab_btn">
+          <img src="./img/ico_theme_zone_3_off.png" alt="손 사진">
+          <p>스크린 속 제주</p>
+        </a>
+        <div class="cont c03">
+          <img src="./img/03.jpg" alt="">
+        </div>
+      </li>
+      <li>
+        <a href="./img/ico_theme_zone_4_on.png" title="" class=" tab_btn">
+          <img src="./img/ico_theme_zone_4_off.png" alt="자동차 사진">
+          <p>교통정보</p>
+        </a>
+        <div class="cont c04">
+          <img src="./img/04.jpg" alt="">
+        </div>
+      </li>
+      <li>
+        <a href="./img/ico_theme_zone_5_on.png" title="" class=" tab_btn">
+          <img src="./img/ico_theme_zone_5_off.png" alt="운전자 사진">
+          <p>안전&middot;안심관광 가이드</p>
+        </a>
+        <div class="cont c05">
+          <img src="./img/05.jpg" alt="">
+        </div>
+      </li>
+    </ul>
+  </article>
+  
+</body>
+</html>
