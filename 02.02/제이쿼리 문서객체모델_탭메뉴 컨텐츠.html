@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리 문서객체모델_탭메뉴 컨텐츠.html</title>
+  <!-- 폰트어썸 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <!-- 제이쿼리 라이브러리  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- jQuery UI 라이브러리 -->
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <style>
+    ul, li{list-style: none;}
+    a{text-decoration: none;color:#333;}
+    body{
+      font-family: '맑은 고딕', arial, sans-serif;
+      font-size:12px;
+      color:#333;
+    }
+    .tab_con *{margin:0px;padding:0px;}
+    .tab_con{
+      width:895px;height:461px;
+      border:3px solid #333;
+      margin:0 auto;
+      position: relative;
+    }
+    .tab_con > h2{
+      line-height: 46px;
+      font-size:26px;
+    }
+    .tab_con > ul{
+      display:flex;
+    }
+    .tab_con > ul > li{
+      width:25%;
+      height:50px;
+      text-align: center;
+    }
+    .tab_con > ul > li a{
+      font-size: 16px;
+      display: block;
+      line-height:50px;
+      border-bottom: 1px solid #333;
+    }
+    .tab_con .con{
+      width:895px; height:355px;
+      position:absolute;
+      bottom:0px;
+      left:0px;
+    }
+
+    .c01{background: #f00;}
+    .c02{background: #0f0;}
+    .c03{background: #ff0;}
+    .c04{background: #00f;}
+
+    .tab_con .con:not(.c01){
+      display:none;
+    }
+    .act{
+      font-weight : bold;
+      border : 1px solid #333;
+      border-bottom : none !important;
+    }
+    </style>
+    <script>
+      $(function(){
+
+        //1. 변수선언
+        let t_mnu = $('.tab_con li a');
+
+        t_mnu.click(function(e){
+          e.preventDefault();
+          $(this).addClass('act').parent().siblings().find('a').removeClass('act');
+          //방법 1. 인덱스값을 사용하여 해당하는 eq() 메소드를 사용
+          //방법 2. this.next().addClass('act');
+          $('.con').hide();
+          $(this).next().show();
+          // $(this).next().show().parent().siblings().find('div').hide();
+        });
+
+
+
+      });
+    </script>
+</head>
+<body>
+  <h2>제이쿼리 문서객체모델_탭메뉴 컨텐츠.html</h2>
+  <p>노랑풍선 사이트의 '해외여행패키지 > 괌' 페이지의 탭메뉴 컨텐츠를 구현한다.</p>
+  <p>탭메뉴 컨텐츠는 메뉴 클릭시 해당하는 컨텐츠가 바로 아래 나오면서 기존 컨텐츠는 숨겨지고, 영역 안에서만 변경되는 컨텐츠이다.</p>
+  <p>특정영역에서만 보여지기 때문에 좁은 공간에서 많은 컨텐츠를 보여주고자 할 때 사용한다.</p>
+  
+  <article class="tab_con">
+    <h2>테마로 만나는 패키지 여행</h2>
+    <ul>
+
+      <li>
+        <a href="#" title="소아동반" class="act">소아동반</a>
+        <div class="con c01">
+          탭메뉴 컨텐츠 내용이 들어가는 박스
+        </div>
+      </li>
+
+      <li>
+        <a href="#" title="워터파크">워터파크</a>
+        <div class="con c02">
+          탭메뉴 컨텐츠 내용이 들어가는 박스
+        </div>
+      </li>
+
+      <li><a href="#" title="가성비갑">가성비갑</a>
+        <div class="con c03">
+          탭메뉴 컨텐츠 내용이 들어가는 박스
+        </div>
+      </li>
+
+      <li><a href="#" title="시내중심">시내중심</a>
+        <div class="con c04">
+          탭메뉴 컨텐츠 내용이 들어가는 박스
+        </div>
+      </li>
+
+    </ul>
+  </article>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0202_exec_tab.html</title>
+  <!-- 폰트어썸 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <!-- 제이쿼리 라이브러리  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- jQuery UI 라이브러리 -->
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <style>
+    ul, li{list-style: none;}
+    a{text-decoration: none;color:#333;}
+    body{
+      font-family: '맑은 고딕', arial, sans-serif;
+      font-size:12px;
+      color:#333;
+    }
+    .hidden{display:none;}
+    .tab_con *{margin:0px;padding:0px;}
+    .tab_con{
+      width:1040px;height:710px;
+      border:3px solid #333;
+      margin:0 auto;
+      position: relative;
+    }
+    .tab_con ul{
+      display:flex;
+    }
+    .tab_con ul li{
+      width:20%;
+      height:90px;
+      text-align: center;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .tab_con ul li a{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction: column;
+      font-weight:bold;
+      padding:16px 80px;
+      white-space:nowrap;
+    }
+    .tab_con ul li a img{
+      display:block;
+      margin-bottom:5px;
+    }
+    .tab_con .con{
+      width:1040px; height:620px;
+      position:absolute;
+      bottom:0px;
+      left:0px;
+    }
+    .tab_con .con:not(.c01){
+      display:none;
+    }
+    .tab_con .con img{
+      width:100%;
+      max-height:620px;
+    }
+
+    .act{
+      background: #f06d01;
+      color:#fff;
+    }
+
+
+  </style>
+  <script>
+    
+    $(function(){
+      let t_mnu = $('.tab_con ul li a');
+
+      $('.tab_con ul li:first-child a img').attr('src','./img/ico_theme_zone_1_on.png');
+     
+      t_mnu.click(function(e){
+
+        e.preventDefault();
+
+        let on = $(this).attr('href');
+
+        // $(this).parent().siblings().find('img').attr('src',img);
+        $(this).parent().siblings().find('a').removeClass('act');
+        $(this).parent().siblings().find('div').hide();
+
+        $(this).addClass('act');
+        $(this).next().show();
+        
+        t_mnu.each(function(){
+          if($(this).hasClass('act')) {
+            $(this).find('img').attr('src',on);
+          } else {
+            let off = $(this).find('img').attr('src').replace('_on', '_off');
+            $(this).find('img').attr('src',off);
+          }
+        });
+
+      });
+
+      /*
+          tmnu.click(function(){
+            let src = $(this).find('img;).attr('src');
+            src = src.replace('_off','_on');
+
+            $(this).find('img').attr('src',src);
+           
+            let n = $(this).index();
+            $('.tmnu li').each(function(i){
+
+              $(this).find('img').attr('src',$(this).find('img').attr('src').replace('_off','_on'));
+    
+              if(n!==i){  //만약에 선택한 요소의 인덱스 번호가 같다면 아래 내용을 실행하고
+                $(this).find('img').attr('src',$(this).find('img').attr('src').replace('_on','_off'));
+
+              }else{ //인덱스 번호가 틀리다면 아래 내용을 실행한다
+
+              }
+
+            });
+          });
+      */
+    });
+  </script>
+</head>
+<body>
+  <article class="tab_con">
+    <h2 class="hidden">탭메뉴 실습예제</h2>
+    <ul>
+
+      <li>
+        <a href="./img/ico_theme_zone_1_on.png" title="아이콘1"  class="act">
+          <img src="./img/ico_theme_zone_1_off.png" alt="아이콘1">
+          테마여행
+        </a>
+        <div class="con c01">
+          <img src="./img/01.jpg" alt="컨텐츠1">
+        </div>
+      </li>
+
+      <li>
+        <a href="./img/ico_theme_zone_2_on.png" title="아이콘2">
+          <img src="./img/ico_theme_zone_2_off.png" alt="아이콘2">
+          추천일정
+        </a>
+        <div class="con c02">
+          <img src="./img/02.jpg" alt="컨텐츠2">
+        </div>
+      </li>
+
+      <li>
+        <a href="./img/ico_theme_zone_3_on.png" title="아이콘3">
+          <img src="./img/ico_theme_zone_3_off.png" alt="아이콘3">
+          스크린속 제주
+        </a>
+        <div class="con c03">
+          <img src="./img/03.jpg" alt="컨텐츠3">
+        </div>
+      </li>
+
+      <li>
+        <a href="./img/ico_theme_zone_4_on.png" title="아이콘4">
+          <img src="./img/ico_theme_zone_4_off.png" alt="아이콘4">
+          교통정보
+        </a>
+        <div class="con c04">
+          <img src="./img/04.jpg" alt="컨텐츠4">
+        </div>
+      </li>
+
+      <li>
+        <a href="./img/ico_theme_zone_5_on.png" title="아이콘5">
+          <img src="./img/ico_theme_zone_5_off.png" alt="아이콘5">
+          안전&middot;안심관광 가이드
+        </a>
+        <div class="con c05">
+          <img src="./img/05.jpg" alt="컨텐츠5">
+        </div>
+      </li>
+
+    </ul>
+  </article>
+
+  
+</body>
+</html>
